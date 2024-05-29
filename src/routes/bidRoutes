@@ -1,0 +1,10 @@
+const express = require('express');
+const { authenticateToken } = require('../middlewares/authMiddleware');
+const { getAllBidsForItem, placeBid } = require('../controllers/bidController');
+
+const router = express.Router();
+
+router.get('/items/:itemId/bids', getAllBidsForItem);
+router.post('/items/:itemId/bids', authenticateToken, placeBid);
+
+module.exports = router;
